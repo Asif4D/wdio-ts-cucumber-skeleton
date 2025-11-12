@@ -1,0 +1,27 @@
+{
+  "name": "wdio-ts-cucumber-cpl-nova",
+  "version": "1.0.0",
+  "description": "WebdriverIO with TypeScript and Cucumber",
+  "main": "index.js",
+  "scripts": {
+    "test": "wdio run wdio.conf.ts --spec \"./features/1 login.feature\" && wdio run wdio.conf.ts --spec \"./features/2 dashboard.feature\"",
+    "test:report": "allure generate allure-results --clean && allure open"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^9.0.0",
+    "@types/node": "^20.0.0",
+    "@wdio/allure-reporter": "^8.16.0",
+    "@wdio/cli": "^9.20.0",
+    "@wdio/cucumber-framework": "^9.20.0",
+    "@wdio/globals": "^9.17.0",
+    "@wdio/local-runner": "^9.20.0",
+    "@wdio/spec-reporter": "^8.16.0",
+    "chromedriver": "^119.0.0",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.0.0",
+    "webdriverio": "^9.20.0"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3"
+  }
+}
