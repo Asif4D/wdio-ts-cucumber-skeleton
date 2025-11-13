@@ -22,7 +22,18 @@ When(/^I click on the logout button$/, async () => {
 });
 
 Then(/^I should be redirected to the login page$/, async () => {
+    // Wait for page navigation after logout
+    await browser.waitUntil(
+        async () => {
+            const currentUrl = await browser.getUrl();
+            return currentUrl.includes('auth');
+        },
+        { timeout: 10000, timeoutMsg: 'Failed to redirect to login page' }
+    );
+    
     // Verify we're back on login page by checking the email input is visible
-    const displayed = await browser.$('//input[@id="email"]').isDisplayed();
+    const emailInput = await browser.$('//input[@id="email"]');
+    await emailInput.waitForDisplayed({ timeout: 5000 });
+    const displayed = await emailInput.isDisplayed();
     expect(displayed).to.be.true;
 });
